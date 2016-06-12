@@ -1,0 +1,51 @@
+h1 {
+  font-size: .1em;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.7em;
+  text-align: center;
+  color: #F0E6EF;
+}
+
+body {
+  background-color: #9C89B8
+}
+
+.jumbotron {
+  padding: 0.5em;
+  width: 80%;
+  background-color: #efc3e6;
+  color: #F0E6EF;
+  margin: 0 auto;
+}
+
+#nameForm {
+  display: inline;
+}
+
+.hide {
+  display: none;
+}
+
+/*Divs*/
+
+#player1Div, #resultsDiv, #player2Div {
+  width: 30%;
+  height: 5em;
+  display: inline-block;
+  margin: .1em;
+  border: 0.1em solid #F0A6CA;
+  margin-top: 4em;
+}
+
+
+/*Chat*/
+#chatDiv {
+  background-color: white;
+  width: 70%;
+  height: 10em;
+  margin: 0 auto;
+  margin-top: 10%;
+}
