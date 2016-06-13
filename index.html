@@ -8,34 +8,56 @@
 </head>
 <body>
 <div class='container'>
-
+  <!-- HEADER -->
   <div class='jumbotron'>
     <h1>Rock Paper Scissors</h1>
   </div>
+  <!-- DIVS -->
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div id="player1Div">
+        <h2>Waiting for Player 1</h2>
+      </div>
 
-  <div id="player1Div">
-    <h2>Waiting for Player 1</h2>
-  </div>
+      <div id="resultsDiv">
+        <h2>Results</h2>
+      </div>
 
-  <div id="resultsDiv">
-    <h2>Results</h2>
-  </div>
-
-  <div id="player2Div">
-    <h2>Waiting for Player 2</h2>
-  </div>
-
-  <div id="chatDiv">
-    <div id="nameFormDiv">
-      <form id="nameForm">
-        <label for="nameInput">Name!</label>
-        <input type="text" id="nameInput">
-        <input id="addPlayer" type="submit" value="Start">
-      </form>
+      <div id="player2Div">
+        <h2>Waiting for Player 2</h2>
+      </div>
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <!-- Enter Name -->
+      <div id="nameDiv">
+        <form class="form-inline" id="nameForm">
+          <p class="form-control-static white">Enter Name:</p>
+          <input class="form-control">
+          <button type="submit" class="btn btn-primary">Start!</button>
+        </form>
+      </div>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-primary chatDiv">
+        <div class="panel-heading"><b> Ishwar </b> <small>online</small></div>
+        <div class="panel-body" style="height: 300px">
+          <div class="clearfix"><blockquote class="me pull-right">Hi</blockquote></div>
+          <div class="clearfix"><blockquote class="you pull-left">Hello</blockquote></div>
+          <div class="clearfix"><blockquote class="me pull-right">wass up !</blockquote></div>
+          <div class="clearfix"><blockquote class="you pull-left">Film was up u!</blockquote></div>
+          <div class="clearfix"><blockquote class="me pull-right">Just outing</blockquote></div>
+          <div class="clearfix"><blockquote class="you pull-left">Hello how do u do ?</blockquote></div>
+          <div class="clearfix"><blockquote class="me pull-right">Yup great !</blockquote></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 

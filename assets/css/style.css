@@ -15,21 +15,9 @@ body {
 
 .jumbotron {
   padding: 0.5em;
-  width: 80%;
   background-color: #efc3e6;
   color: #F0E6EF;
   margin: 0 auto;
-}
-
-
-
-#nameFormDiv {
-  margin: 20% 30% 30% 30%;
-  position: relative;
-}
-
-#nameForm {
-  
 }
 
 .hide {
@@ -49,9 +37,38 @@ body {
 
 
 /*Chat*/
-#chatDiv {
-  background-color: white;
-  width: 70%;
-  margin: 5em auto;
-  padding-top: .1em;
+.chatDiv {
+  margin: 2em;
+}
+
+#nameDiv {
+  margin: 20px auto;
+  width: 100%;
+  display: inline-block;
+}
+
+#nameForm {
+  margin-left: 27%;
+  margin-top: 5%;
+}
+
+.me{
+  font-size: 14px;
+  margin: -4px;
+  border-right: 3px solid #60DF88 !important;
+  padding: 5px;
+  background-color: rgb(239, 255, 241);
+}
+
+.you{
+  font-size: 14px;
+  margin: -4px;
+  border-left: 3px solid rgb(255, 112, 0) !important;
+  padding: 5px;
+  padding-left:10px;
+  background-color: rgb(247, 247, 214);
+}
+
+.white {
+  color: white;
 }
