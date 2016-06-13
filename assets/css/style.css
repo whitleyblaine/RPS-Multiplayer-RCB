@@ -28,7 +28,7 @@ body {
 
 #player1Div, #resultsDiv, #player2Div {
   width: 30%;
-  height: 5em;
+  height: 20em;
   display: inline-block;
   margin: .1em;
   border: 0.1em solid #F0A6CA;
@@ -37,7 +37,7 @@ body {
 
 
 /*Chat*/
-.chatDiv {
+#chatDiv {
   margin: 2em;
 }
 
