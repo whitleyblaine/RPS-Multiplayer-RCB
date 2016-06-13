@@ -4,7 +4,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.7em;
+  font-size: 1.4em;
   text-align: center;
   color: #F0E6EF;
 }
@@ -21,8 +21,15 @@ body {
   margin: 0 auto;
 }
 
+
+
+#nameFormDiv {
+  margin: 20% 30% 30% 30%;
+  position: relative;
+}
+
 #nameForm {
-  display: inline;
+  
 }
 
 .hide {
@@ -45,7 +52,6 @@ body {
 #chatDiv {
   background-color: white;
   width: 70%;
-  height: 10em;
-  margin: 0 auto;
-  margin-top: 10%;
+  margin: 5em auto;
+  padding-top: .1em;
 }
