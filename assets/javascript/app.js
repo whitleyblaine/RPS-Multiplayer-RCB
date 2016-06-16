@@ -1,3 +1,7 @@
+// Chat vars
+var playerID;
+var chatCounter = 0;
+
 // Player 1 var
 var p1LoggedIn = false;
 var p1Choice = '';
@@ -32,6 +36,7 @@ var rpsDiv2 = $('<div id="rpsDiv2">').append(rock2).append(paper2).append(scisso
 // Firebase var
 var database = new Firebase("https://rcb-rps-multiplayer.firebaseio.com/");
 var players = database.child("players");
+var chatBox = database.child("chat");
 var player1 = players.child('1');
 var player2 = players.child('2');
 
@@ -42,13 +47,15 @@ var reset = function() {
   p2Choice = null;
   turn = 1;
   $('#resultsDiv').html('<h2>Results</h2>');
-  $('#rpsDiv1').removeClass('hide');
+  if (playerID == 1) {
+    $('#rpsDiv1').removeClass('hide');
+  };
   player1.update({'choice': p1Choice,});
   player2.update({'choice': p2Choice,});
   database.update({'turn': turn})
 }
 
-// Show Results
+// Show Results function
 var showResults = function() {
   var winner;
   if (p1Choice == p2Choice && p1Choice != null) {
@@ -100,6 +107,84 @@ var showResults = function() {
   setTimeout(function() {reset()}, 5000);
 }
 
+// Reset button
+$('#resetButton').on('click', function() {
+  database.set({});
+  window.location.reload();
+});
+
+// Enter Name, Start Game
+$('#startGame').on('click', function() {
+  if (p1Name == null) {
+    p1Name = $('#nameInput').val();
+    playerID = 1;
+    player1.set({
+      'name': p1Name,
+      'losses': p1Losses,
+      'wins': p1Wins
+    });
+  } else {
+    p2Name = $('#nameInput').val();
+    playerID = 2;
+    database.update({'turn': turn, 'chatCounter': chatCounter})
+    player2.set({
+      'name': p2Name,
+      'losses': p2Losses,
+      'wins': p2Wins
+    });
+  };
+  $('#nameDiv').addClass('hide');
+  $('#chatDiv').removeClass('hide');
+  $('#chatForm').removeClass('hide');
+
+  return false;
+});
+
+$('#chatSubmit').on('click', function() {
+  chatCounter++;
+  database.update({'chatCounter': chatCounter});
+
+  var message = $('#chatInput').val();
+  if (playerID == 1) {
+    player1.update({'message': message});
+  }
+  else if (playerID == 2) {
+    player2.update({'message': message});
+  }
+  return false;
+})
+
+player1.child('message').on('value', function(snapshot) {
+  var p1Message = snapshot.val();
+  if (playerID == 1) {
+    var messageDiv = $('<div class="clearfix">').html('<blockquote class="me pull-right">' + p1Message + '</blockquote');
+  } else if (playerID == 2) {
+    var messageDiv = $('<div class="clearfix">').html('<blockquote class="you pull-left">' + p1Message + '</blockquote');
+  };
+  $('#chatBody').append(messageDiv);
+});
+
+player2.child('message').on('value', function(snapshot) {
+  var p2Message = snapshot.val();
+  if (playerID == 1) {
+    var messageDiv = $('<div class="clearfix">').html('<blockquote class="you pull-left">' + p2Message + '</blockquote');
+  } else if (playerID == 2) {
+    var messageDiv = $('<div class="clearfix">').html('<blockquote class="me pull-right">' + p2Message + '</blockquote');
+  };
+  chatCounter++;
+  $('#chatBody').append(messageDiv);
+});
+
+database.child('chatCounter').on('value', function(snapshot) {
+  var chatCounterSynced = snapshot.val();
+  if(chatCounterSynced > 15) {
+    $('#chatBody').html('');
+    chatCounter = 0;
+    database.update({'chatCounter': chatCounter});
+  }
+});
+
+
 
 player1.child("name").on('value', function(snapshot) {
   p1Name = snapshot.val();
@@ -112,7 +197,9 @@ player2.child("name").on('value', function(snapshot) {
   p2Name = snapshot.val();
   if (p2Name != null) {
     $('#player2Div').html('<h2>' + p2Name + '<h2>').append(winLossP2);
-    $('#player1Div').append(rpsDiv1);
+    if (playerID == 1) {
+      $('#player1Div').append(rpsDiv1);
+    }
     turn = 1;
     database.update({'turn': turn})
   }
@@ -122,36 +209,14 @@ database.child('turn').on('value', function(snapshot) {
   turn = snapshot.val();
   if (turn == 2) {
     $('#rpsDiv1').addClass('hide');
-    $('#rpsDiv2').removeClass('hide');
-    $('#player2Div').append(rpsDiv2);
+    if (playerID == 2) {
+      $('#rpsDiv2').removeClass('hide');
+      $('#player2Div').append(rpsDiv2);
+    };
   } else if (turn == 3) {
     $('#rpsDiv2').addClass('hide');
     showResults();
   }
-});
-
-$('#startGame').on('click', function() {
-  if (p1Name == null) {
-    p1Name = $('#nameInput').val();
-    player1.set({
-      'name': p1Name,
-      'losses': p1Losses,
-      'wins': p1Wins
-    });
-  } else {
-    p2Name = $('#nameInput').val();
-    database.update({'turn': turn})
-    player2.set({
-      'name': p2Name,
-      'losses': p2Losses,
-      'wins': p2Wins
-    });
-  };
-
-  $('#nameDiv').addClass('hide');
-  $('#chatDiv').removeClass('hide');
-
-  return false;
 });
 
 player1.on('value', function(snapshot) {
@@ -166,7 +231,6 @@ $(document).on('click', '.RPSButtons', function() {
   var userChoice = this.innerHTML;
   if (turn == 1) {
     p1Choice = userChoice;
-    alert(userChoice);
     player1.update({
       'choice': p1Choice
     });

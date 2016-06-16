@@ -12,6 +12,8 @@
   <div class='jumbotron'>
     <h1>Rock Paper Scissors</h1>
   </div>
+  <!-- Reset button -->
+    <button class="btn btn-success" id="resetButton">Game not working? <br> Click Me To Reset All Data</button>
   <!-- DIVS -->
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
@@ -46,16 +48,19 @@
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-primary hide" id="chatDiv">
         <div class="panel-heading"><small>online</small></div>
-        <div class="panel-body" style="height: 300px">
-          <div class="clearfix">"Hi"</div>
-          <div class="clearfix"><blockquote class="you pull-left">Hello</blockquote></div>
-          <div class="clearfix"><blockquote class="me pull-right">wass up !</blockquote></div>
-          <div class="clearfix"><blockquote class="you pull-left">Film was up u!</blockquote></div>
-          <div class="clearfix"><blockquote class="me pull-right">Just outing</blockquote></div>
-          <div class="clearfix"><blockquote class="you pull-left">Hello how do u do ?</blockquote></div>
-          <div class="clearfix"><blockquote class="me pull-right">Yup great !</blockquote></div>
+        <div class="panel-body" id="chatBody" style="height: 300px">
+          <!-- Chats go here -->
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <form class="form-inline hide" id="chatForm" onSubmit="return false">
+        <p class="form-control-static blue">Say something:</p>
+        <input class="form-control" id="chatInput">
+        <button type="button" class="btn btn-default" id="chatSubmit">Send!</button>
+      </form>
     </div>
   </div>
 </div>
