@@ -6,17 +6,17 @@ h1 {
 h2 {
   font-size: 1.4em;
   text-align: center;
-  color: #F0E6EF;
+  color: #094D92;
 }
 
 body {
-  background-color: #9C89B8
+  background-color: #68B684
 }
 
 .jumbotron {
   padding: 0.5em;
-  background-color: #efc3e6;
-  color: #F0E6EF;
+  background-color: #95E06C;
+  color: #094D92;
   margin: 0 auto;
 }
 
@@ -31,8 +31,9 @@ body {
   height: 20em;
   display: inline-block;
   margin: .1em;
-  border: 0.1em solid #F0A6CA;
+  border: 0.1em solid #1C1018;
   margin-top: 4em;
+  position: relative;
 }
 
 
@@ -69,6 +70,37 @@ body {
   background-color: rgb(247, 247, 214);
 }
 
-.white {
-  color: white;
+.blue {
+  color: #094D92;
+}
+
+
+.topNameDiv {
+  width: 30%;
+  height: 20em;
+  margin: .1em;
+  border: 0.1em solid #1C1018;
+  margin-top: 4em;
+}
+
+
+#winLossP1Span {
+  color: #094D92;
+  position: absolute;
+  bottom: 0;
+  right: 6em;
+}
+
+#winLossP2Span {
+  color: #094D92;
+  position: absolute;
+  bottom: 0;
+  right: 6em;
+}
+
+
+
+.btn-success {
+  margin: 5% 0 0 25%;
+  width: 50%;
 }
