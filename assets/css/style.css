@@ -9,13 +9,28 @@ h2 {
   color: #094D92;
 }
 
+#resetButton {
+  font-size: 1.3em;
+  background: royalblue;
+  border: 5px double lightgreen;
+}
+
+#resetButton:hover {
+  padding: .5em;
+  color: black;
+  background: lightgreen;
+  border: 5px double royalblue;
+}
+
 body {
-  background-color: #68B684
+  background: radial-gradient(lightgreen, aqua, lightgreen, lightblue, blue); 
+  font-family: 'Indie Flower', cursive;
 }
 
 .jumbotron {
   padding: 0.5em;
-  background-color: #95E06C;
+  background: radial-gradient(lightblue, aqua, lightgreen);
+  border: 3px double blue;
   color: #094D92;
   margin: 0 auto;
 }
@@ -31,7 +46,7 @@ body {
   height: 20em;
   display: inline-block;
   margin: .1em;
-  border: 0.1em solid #1C1018;
+  border: 3px double blue;
   margin-top: 4em;
   position: relative;
 }
@@ -97,8 +112,6 @@ body {
   bottom: 0;
   right: 6em;
 }
-
-
 
 .btn-success {
   margin: 5% 0 0 25%;
